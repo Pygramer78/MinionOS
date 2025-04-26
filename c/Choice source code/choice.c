@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) 
 {
 	if (argc < 3) {
-        printf("Uso: %s <caracteres> <texto>\n", argv[0]);
+        printf("Use: %s <characters> <text>\n", argv[0]);
         return 1;
     }
 	char *characters = argv[1];
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 				exit(i+1);	
 			}
 		}
-		printf("Error: %c no se ha encontrado \n", input);
-		printf("Elecciones: %s\n", characters);
+		printf("Error: %c wasn't found \n", input);
+		printf("Elections: %s\n", characters);
 	}
 }
