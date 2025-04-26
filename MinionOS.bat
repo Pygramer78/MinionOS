@@ -1,4 +1,5 @@
 @echo off
+setlocal EnableDelayedExpansion
 rem Welcome to MinionOS
 rem This is a prank program that simulates a fake operating system.
 rem Configurations; 
@@ -150,7 +151,7 @@ cls
 echo -- create --
 echo Current path: %cd%
 dir
-choice sn "Change directory? [Y/N]"
+choice yn "Change directory? [Y/N]"
 if errorlevel 2 goto :create_file
 if errorlevel 1 (
     set /p new_path="Write the new path: "
@@ -164,18 +165,18 @@ if errorlevel 1 (
 :create_file
 cls
 echo Current path: %cd%
-choice ad "Create file or directory? [F/D]"
+choice fd "Create file or directory? [F/D]"
 if errorlevel 2 (
     set /p dir_name="Directory name and path: "
-    md "%dir_name%" || echo Error creating the directory.
-    if exist %dir_name% echo Directory created successfully.
+    md !dir_name! || echo Error creating the directory.
+    if exist !dir_name! echo Directory created successfully.
     pause
     goto :menu
 )
 if errorlevel 1 (
     set /p file_name="File name and path (with extension): "
-    type nul > "%file_name%" || echo Error creating the file.
-    if exist %file_name% echo File created successfully.
+    type nul > !file_name! || echo Error creating the file.
+    if exist !file_name! echo File created successfully.
     pause
     goto :menu
 )
