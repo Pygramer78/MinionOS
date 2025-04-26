@@ -74,7 +74,7 @@ if [%path%] == [] (
 )
 
 echo Current directory contents:
-dir
+dir %path%
 pause
 goto :explorer
 
