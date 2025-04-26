@@ -53,10 +53,10 @@ if errorlevel 1 goto :search
 cls
 echo -- search --
 set /p argument="Path to the file or folder: "
-if exist "%argument%" (
-    echo "%argument%" exists
+if exist %argument% (
+    echo %argument% exists
 ) else (
-    echo "%argument%" does not exist
+    echo %argument% does not exist
 )
 echo Returning to the menu...
 pause
@@ -66,18 +66,13 @@ goto :menu
 cls
 echo -- explorer --
 set /p path="Write the path to the directory: "
-if /i "%path%"=="close" goto :menu
-if "%path%"=="" (
+if /i %path% == close goto :menu
+if [%path%] == [] (
     echo Use: path [if you want to go to the menu type "close"]
     pause
     goto :explorer
 )
-if exist "%path%" (
-    cd /d "%path%"
-) else (
-    echo Path was not found.
-    pause
-)
+
 echo Current directory contents:
 dir
 pause
@@ -89,7 +84,7 @@ goto :menu
 
 :exit
 cls
-choice sn "Close program [Y/N]" 
+choice yn "Close program [Y/N]" 
 if errorlevel 2 (
     echo Returning to start...
     goto :start
@@ -159,8 +154,8 @@ choice sn "Change directory? [Y/N]"
 if errorlevel 2 goto :create_file
 if errorlevel 1 (
     set /p new_path="Write the new path: "
-    if exist "%new_path%" (
-        cd /d "%new_path%"
+    if exist %new_path% (
+        dir %new_path%
     ) else (
         echo Path not found.
         pause
@@ -171,16 +166,16 @@ cls
 echo Current path: %cd%
 choice ad "Create file or directory? [F/D]"
 if errorlevel 2 (
-    set /p dir_name="Directory name: "
+    set /p dir_name="Directory name and path: "
     md "%dir_name%" || echo Error creating the directory.
-    echo Directory created successfully.
+    if exist %dir_name% echo Directory created successfully.
     pause
     goto :menu
 )
 if errorlevel 1 (
-    set /p file_name="File name (with extension): "
+    set /p file_name="File name and path (with extension): "
     type nul > "%file_name%" || echo Error creating the file.
-    echo File created successfully.
+    if exist %file_name% echo File created successfully.
     pause
     goto :menu
 )
