@@ -66,16 +66,16 @@ goto :menu
 :explorer
 cls
 echo -- explorer --
-set /p path="Write the path to the directory: "
-if /i %path% == close goto :menu
-if [%path%] == [] (
+set /p pat="Write the path to the directory: "
+if /i %pat% == close goto :menu
+if [%pat%] == [] (
     echo Use: path [if you want to go to the menu type "close"]
     pause
     goto :explorer
 )
 
 echo Current directory contents:
-dir %path%
+dir %pat%
 pause
 goto :explorer
 
