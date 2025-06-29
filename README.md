@@ -4,6 +4,7 @@ MinionOS or MiniOS is a little program made for windows XP
 I do not care. I have an old medion and it works perfectly
 # Warning!
 Put choice.exe in system32 file or else it won't work.
+Same with the MinionOS batch file
 Or you can give path to the directory
 ## Compatibility
 As i said before this is for windows xp. This can also be used in windows 11.
